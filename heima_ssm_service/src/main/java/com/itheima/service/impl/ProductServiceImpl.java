@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ * @Author dxf
+ * @Description  对product表数据进行操作
+*/
 @Service
-public class ProductService implements IProductService {
+public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductDao productDao;
 
@@ -16,5 +21,16 @@ public class ProductService implements IProductService {
     public List<Product> findAll() throws Exception{
 
         return productDao.findAll();
+    }
+
+    /**
+     * 保存数据
+     * @param product
+     */
+    @Override
+    public void saveProduct(Product product) throws Exception{
+        System.out.println(product);
+        productDao.saveProduct(product);
+
     }
 }

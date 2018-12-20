@@ -19,10 +19,17 @@
     <context:component-scan base-package="com.itheima.controller"/>
     <mvc:annotation-driven/>
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="prefix" value="/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <!--过滤静态资源,开启默认servlet过滤-->
     <mvc:default-servlet-handler/>
+
+
+    <!-- 设置静态资源不过滤 -->
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/img/" mapping="/img/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/plugins/" mapping="/plugins/**" />
 
 </beans>

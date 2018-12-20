@@ -195,7 +195,7 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建"
-											onclick="location.href='${pageContext.request.contextPath}/pages/product-add.jsp'">
+											onclick="location.href='${pageContext.request.contentType}/pages/product-add.jsp'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										<button type="button" class="btn btn-default" title="删除">
@@ -353,6 +353,9 @@
 			</section>
 			<!-- 正文区域 /-->
 
+
+
+
 		</div>
 		<!-- @@close -->
 		<!-- 内容区域 /-->
@@ -367,6 +370,13 @@
 			</strong> All rights reserved.
 		</footer>
 		<!-- 底部导航 /-->
+
+
+
+
+
+
+
 
 	</div>
 
@@ -499,6 +509,13 @@
 				$(this).data("clicks", !clicks);
 			});
 		});
+
+
+
+
+
+
+
 	</script>
 </body>
 

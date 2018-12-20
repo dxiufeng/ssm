@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="product/findAll.do">查询所有</a>
+    <jsp:forward page="${pageContext.request.contentType}/pages/main.jsp"/>
 </body>
 </html>
