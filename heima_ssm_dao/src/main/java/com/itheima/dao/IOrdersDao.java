@@ -19,7 +19,7 @@ public interface IOrdersDao {
             @Result(property = "peopleCount", column = "peopleCount"),
             @Result(property = "payType", column = "payType"),
             @Result(property = "orderDes", column = "orderDes"),
-            @Result(property = "product",column = "productId",one = @One(select = "com.itheima.dao.IProductDao.findById"))
+            @Result(property = "product",column = "productId",javaType = Process.class,one = @One(select = "com.itheima.dao.IProductDao.findById"))
     })
-    public List<Orders> findAll();
+    public List<Orders> findAll(Integer pageNum,Integer pageSize) throws Exception;
 }

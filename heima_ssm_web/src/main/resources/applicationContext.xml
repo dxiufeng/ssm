@@ -30,6 +30,19 @@
     <!--配置实现mybatis的工厂对象-->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <!--配置pageHelp插件,用于分页使用-->
+        <property name="plugins">
+            <array>
+                <bean  class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <prop key="helperDialect">oracle</prop>
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
         <!--取别名-->
        <!-- <property name="typeAliasesPackage" value="com.itheima.domain"/>-->
     </bean>
