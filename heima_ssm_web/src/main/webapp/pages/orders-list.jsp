@@ -317,9 +317,13 @@
                         <div class="form-group form-inline">
                             总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页
                             <select class="form-control" onchange="changePageSize()" id="changePageSize">
-								<c:forEach begin="1" end="5" var="number">
-									<option id="num">${number}</option>
-								</c:forEach>
+
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+
                             </select> 条
                         </div>
                     </div>
@@ -461,7 +465,7 @@
 			var pageSize = $("#changePageSize").val();
 
 
-            $("#num").val(pageSize);
+
 			//向服务器发送请求，改变没页显示条数
 			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize="
 					+ pageSize;
@@ -507,6 +511,10 @@
 				$(this).data("clicks", !clicks);
 			});
 		});
+
+		$(function(){
+            $("#changePageSize").val("${pageInfo.pageSize}");
+		})
 	</script>
 </body>
 
