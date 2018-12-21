@@ -21,4 +21,9 @@ public class OrdersServiceImpl implements IOrdersService {
         List<Orders> list = ordersDao.findAll(page,pageSize);
         return list;
     }
+
+    @Override
+    public Orders findById(String orderId) {
+        return ordersDao.findById(orderId);
+    }
 }

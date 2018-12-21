@@ -19,7 +19,7 @@ public class Orders implements Serializable{
     private Member member;
     private Integer payType;
     private String payTypeStr;
-    private String orderDes;
+    private String orderDesc;
 
     public String getOrderStatusStr() {
         //订单状态(0 未支付 1 已支付)
@@ -139,12 +139,12 @@ public class Orders implements Serializable{
         this.payTypeStr = payTypeStr;
     }
 
-    public String getOrderDes() {
-        return orderDes;
+    public String getorderDesc() {
+        return orderDesc;
     }
 
-    public void setOrderDes(String orderDes) {
-        this.orderDes = orderDes;
+    public void setorderDesc(String orderDesc) {
+        this.orderDesc = orderDesc;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class Orders implements Serializable{
                 ", member=" + member +
                 ", payType=" + payType +
                 ", payTypeStr='" + payTypeStr + '\'' +
-                ", orderDes='" + orderDes + '\'' +
+                ", orderDesc='" + orderDesc + '\'' +
                 '}';
     }
 }

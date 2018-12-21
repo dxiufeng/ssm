@@ -29,4 +29,15 @@ public class OrdersController {
 
         return mv;
     }
+
+
+    //通过id查询一个orders,并查询与orders有关联的所有表数据
+    @RequestMapping("findById")
+    public ModelAndView findById(String id){
+        ModelAndView mv=new ModelAndView();
+        Orders orders = ordersService.findById(id);
+        mv.addObject("orders",orders);
+        mv.setViewName("orders-show");
+        return mv;
+    }
 }
