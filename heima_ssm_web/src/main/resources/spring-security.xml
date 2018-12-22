@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+    <!--配置一些资源不会被拦截-->
+    <security:http security="none" pattern="/login.jsp"/>
+    <security:http security="none" pattern="/failer.jsp"/>
+    <security:http security="none" pattern="/css/**"/>
+    <security:http security="none" pattern="/img/**"/>
+    <security:http security="none" pattern="/plugins/**"/>
+    <!--配置security框架的-->
+    <!--auto-config="true"不同写登录页面,use-expressions="false"是否使用SPEL表达式（没学习过）-->
+    <security:http auto-config="true" use-expressions="false">
+        <!--配置拦截规则-->
+        <security:intercept-url pattern="/*" access="ROLE_USER,ROLE_ADMIN,ROLE_aaa"/>
+        <!--定义跳转的具体页面-->
+        <security:form-login login-page="/login.jsp"
+                             login-processing-url="/login.do"
+                             default-target-url="/pages/main.jsp"
+                             authentication-success-forward-url="/pages/main.jsp"
+                             authentication-failure-url="/failer.jsp"/>
+
+        <!-- 关闭跨域请求,一定要开启不容会出现拒绝任何访问的问题-->
+        <security:csrf disabled="true"/>
+
+        <!--退出-->
+        <security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.jsp"/>
+    </security:http>
+
+
+    <!--配置数据库账户信息-->
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userService">
+            <!--配置加密方式-->
+            <!--<security:password-encoder ref="passwordEncoding"/>-->
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+
+    <!--配置加密类-->
+    <bean id="passwordEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
+
+</beans>
