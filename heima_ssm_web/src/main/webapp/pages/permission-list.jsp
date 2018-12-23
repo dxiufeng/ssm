@@ -79,15 +79,15 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				用户管理 <small>全部用户</small>
+				资源权限管理 <small>全部权限</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
+					href="${pageContext.request.contextPath}/permission/findAll.do">资源权限管理</a></li>
 
-				<li class="active">全部用户</li>
+				<li class="active">全部权限</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
@@ -108,7 +108,7 @@
 							<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/user-add.jsp'">
+										<button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/permission-add.jsp'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										
@@ -136,26 +136,22 @@
 											id="selall" type="checkbox" class="icheckbox_square-blue">
 										</th>
 										<th class="sorting_asc">ID</th>
-										<th class="sorting_desc">用户名</th>
-										<th class="sorting_asc sorting_asc_disabled">邮箱</th>
-										<th class="sorting_desc sorting_desc_disabled">联系电话</th>
-										<th class="sorting">状态</th>
+										<th class="sorting_desc">权限名称</th>
+										<th class="sorting_asc sorting_asc_disabled">URL</th>
 										<th class="text-center">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 
-									<c:forEach items="${pageInfo.list}" var="user">
+									<c:forEach items="${permissionList}" var="p">
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${user.id }</td>
-											<td>${user.username }</td>
-											<td>${user.email }</td>
-											<td>${user.phoneNum }</td>
-											<td>${user.statusStr }</td>											
+											<td>${p.id }</td>
+											<td>${p.permissionName }</td>
+											<td>${p.url }</td>
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/user/findById.do?id=${user.id}" class="btn bg-olive btn-xs">详情</a>
-												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${user.id}" class="btn bg-olive btn-xs">添加角色</a>
+												<a href="${pageContext.request.contextPath}/role/findById.do?id=${p.id}" class="btn bg-olive btn-xs">详情</a>
+												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${p.id}" class="btn bg-olive btn-xs">添加角色</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -195,15 +191,15 @@
 
 						<div class="box-tools pull-right">
 							<ul class="pagination">
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a></li>
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${page-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
-								<c:forEach begin="1" end="${pageInfo.pages}" var="page">
-									<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${page}&pageSize=${pageInfo.pageSize}">${page}</a></li>
-
-
-								</c:forEach>
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${page+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
-								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a></li>
+								<li><a href="#" aria-label="Previous">首页</a></li>
+								<li><a href="#">上一页</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">下一页</a></li>
+								<li><a href="#" aria-label="Next">尾页</a></li>
 							</ul>
 						</div>
 

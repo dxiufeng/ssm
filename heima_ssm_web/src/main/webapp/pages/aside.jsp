@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
+
+
 	<section class="sidebar">
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
@@ -25,7 +29,11 @@
 
 			<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
 					<span>系统管理</span> <span class="pull-right-container"> <i
+
+
 						class="fa fa-angle-left pull-right"></i>
+
+
 				</span>
 
 
@@ -59,15 +67,21 @@
 					<li id="system-setting1"><a
 						href="${pageContext.request.contextPath}/product/findAll.do">
 							<i class="fa fa-circle-o"></i> 产品管理
+
 					</a></li>
 					<li id="system-setting2"><a
 						href="${pageContext.request.contextPath}/orders/findAll.do"> <i
 							class="fa fa-circle-o"></i> 订单管理
+
 					</a></li>
+
 
 				</ul></li>
 
 		</ul>
 	</section>
+
+
+
 	<!-- /.sidebar -->
 </aside>

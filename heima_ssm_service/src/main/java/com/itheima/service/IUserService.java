@@ -13,4 +13,8 @@ public interface IUserService extends UserDetailsService{
 
    public List<UserInfo> findAll(Integer page,Integer pageSize);
 
+    public UserInfo findById(String id) throws Exception;
+
+    void saveUserInfo(UserInfo userInfo) throws Exception;
+
 }

@@ -30,7 +30,7 @@
         <security:form-login
                 login-page="/login.jsp"
                 login-processing-url="/login.do"
-                default-target-url="/pages/main.jsp"
+                default-target-url="/index.jsp"
                 authentication-failure-url="/failer.jsp"
 
         />
@@ -48,7 +48,7 @@
     <security:authentication-manager>
         <security:authentication-provider user-service-ref="userService">
             <!--配置加密方式-->
-            <!--<security:password-encoder ref="passwordEncoding"/>-->
+            <security:password-encoder ref="passwordEncoding"/>
         </security:authentication-provider>
     </security:authentication-manager>
 

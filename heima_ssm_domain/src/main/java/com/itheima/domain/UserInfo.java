@@ -74,6 +74,14 @@ public class UserInfo {
     }
 
     public Integer getStatus() {
+        if (statusStr!=null){
+            if ("未开启".equals(statusStr)){
+                status=0;
+            }
+            if ("开启".equals(statusStr)){
+                status=1;
+            }
+        }
         return status;
     }
 
