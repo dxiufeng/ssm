@@ -33,14 +33,13 @@
 
 
     <!--监听器-->
-    <listener>
+   <!-- <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:applicationContext.xml,classpath*:spring-security.xml</param-value>
-    </context-param>
-
+    </context-param>-->
     <!--配置过滤器springSecurityFilterChain,用户开启spring-security框架-->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

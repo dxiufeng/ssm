@@ -17,15 +17,25 @@
     <!--auto-config="true"不同写登录页面,use-expressions="false"是否使用SPEL表达式（没学习过）-->
     <security:http auto-config="true" use-expressions="false">
         <!--配置拦截规则-->
-        <security:intercept-url pattern="/*" access="ROLE_USER,ROLE_ADMIN,ROLE_aaa"/>
-        <!--定义跳转的具体页面-->
+        <security:intercept-url pattern="/**" access="ROLE_user,ROLE_admin,ROLE_aaa"/>
+
+       <!-- 定义跳转的具体页面
         <security:form-login login-page="/login.jsp"
                              login-processing-url="/login.do"
                              default-target-url="/pages/main.jsp"
                              authentication-success-forward-url="/pages/main.jsp"
-                             authentication-failure-url="/failer.jsp"/>
+                             authentication-failure-url="/failer.jsp"/>-->
 
-        <!-- 关闭跨域请求,一定要开启不容会出现拒绝任何访问的问题-->
+        <!-- 定义跳转的具体的页面 -->
+        <security:form-login
+                login-page="/login.jsp"
+                login-processing-url="/login.do"
+                default-target-url="/pages/main.jsp"
+                authentication-failure-url="/failer.jsp"
+
+        />
+
+        <!-- 关闭跨域请求,一定要开启,fouze否则会出现拒绝任何访问的问题-->
         <security:csrf disabled="true"/>
 
         <!--退出-->

@@ -1,5 +1,7 @@
 package com.itheima.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IUserDao;
 import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
@@ -33,7 +35,7 @@ public class UserServiceImpl implements IUserService {
         UserInfo userInfo = userDao.findByUsername(username);
         /*  User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(), getAuthority(userInfo.getRoles()));*/
 
-        User user = new User(userInfo.getUsername(), "{noop}"+userInfo.getPassword(), userInfo.getStatus() == 1 ? true : false, true, true, true, getAuthority(userInfo.getRoles()));
+        User user = new User(userInfo.getUsername(), "{noop}"+userInfo.getPassword(), userInfo.getStatus() == 0 ? false : true, true, true, true, getAuthority(userInfo.getRoles()));
         return user;
     }
 
@@ -41,15 +43,24 @@ public class UserServiceImpl implements IUserService {
      * 给用户添加权限
      */
 
-    public List<GrantedAuthority> getAuthority(List<Role> roles) {
-        List<GrantedAuthority> list = new ArrayList<>();
-        GrantedAuthority role_user = null;
+    public List<SimpleGrantedAuthority> getAuthority(List<Role> roles) {
+        List<SimpleGrantedAuthority> list = new ArrayList<>();
         for (Role role : roles) {
-            role_user = new SimpleGrantedAuthority("ROLE_" + role.getRoleName());
+            list.add( new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
         }
 
-
-        list.add(role_user);
         return list;
+    }
+
+
+    /**
+     * 查询所有用户信息
+     * @return
+     */
+    @Override
+    public List<UserInfo> findAll(Integer page,Integer pageSize) {
+        PageHelper.startPage(page,pageSize);
+        List<UserInfo> users = userDao.findAll(page,pageSize);
+        return users;
     }
 }
